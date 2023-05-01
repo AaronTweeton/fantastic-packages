@@ -4,7 +4,7 @@ import { App } from "./app";
 
 domReady(function () {
   const domElement = document.getElementById("app");
-  const uiElement = createElement(App, { toWhom: "World" });
+  const uiElement = createElement(App);
 
   if (createRoot) {
     createRoot(domElement).render(uiElement);
