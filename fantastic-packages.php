@@ -35,9 +35,11 @@ if (!defined('ABSPATH')) {
 if (!class_exists('FantasticPackages_Plugin')) {
     class FantasticPackages_Plugin {
         static $instance = false;
+        private $handle = 'fantastic-packages';
 
         private function __construct() {
             add_action('admin_menu', array($this, 'create_admin_page'));
+            add_action('admin_enqueue_scripts', array($this, 'enqueue_assets'));
         }
 
         public static function get_instance(): FantasticPackages_Plugin {
@@ -46,7 +48,7 @@ if (!class_exists('FantasticPackages_Plugin')) {
             return self::$instance;
         }
 
-        public function compose_menu_page() {
+        public function compose_menu_page(): void {
             require_once plugin_dir_path(__FILE__) . 'includes/admin-page.php';
         }
 
@@ -55,9 +57,20 @@ if (!class_exists('FantasticPackages_Plugin')) {
                 'Fantastic Packages Demo',
                 'Fantastic Packages',
                 'manage_options',
-                'fantastic-packages',
+                $this->handle,
                 array($this, 'compose_menu_page'),
                 'dashicons-drumstick',
+            );
+        }
+
+        public function enqueue_assets(string $hook): void {
+            if ('toplevel_page_' . $this->handle !== $hook) {
+                return;
+            }
+
+            wp_enqueue_script(
+                $this->handle,
+                plugins_url('admin/js/index.js', __FILE__),
             );
         }
     }
