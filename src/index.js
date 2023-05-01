@@ -1,13 +1,4 @@
-/**
- * Adds a message to #app using JavaScript.
- */
-function addMessage() {
-  const el = document.querySelector("#app");
-
-  if (el) {
-    el.innerText = "Plugin JavaScript is loaded.";
-  }
-}
+import { addMessage } from "./add-message";
 
 window.addEventListener("DOMContentLoaded", (event) => {
   addMessage();
