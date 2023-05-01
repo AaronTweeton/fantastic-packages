@@ -1,5 +1,6 @@
+import domReady from "@wordpress/dom-ready";
 import { addMessage } from "./add-message";
 
-window.addEventListener("DOMContentLoaded", (event) => {
+domReady(function () {
   addMessage();
 });
