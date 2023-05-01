@@ -1,3 +1,3 @@
-export function Greeting(props) {
-  return <span>Hello {props.toWhom}!</span>;
+export function Greeting({ toWhom }) {
+  return <span>Hello {toWhom}!</span>;
 }
