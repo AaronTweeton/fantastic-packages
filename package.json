@@ -6,6 +6,7 @@
   "scripts": {
     "build": "wp-scripts build",
     "start": "wp-scripts start",
+    "plugin-zip": "wp-scripts plugin-zip",
     "test:unit": "wp-scripts test-unit-js"
   },
   "repository": {
