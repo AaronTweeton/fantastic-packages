@@ -6,9 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AaronTweeton/fantastic-packages"
+  },
   "keywords": [
     "WordPress"
   ],
   "author": "Aaron Tweeton",
-  "license": "GPL-2.0-or-later"
+  "license": "GPL-2.0-or-later",
+  "bugs": {
+    "url": "https://github.com/AaronTweeton/fantastic-packages/issues"
+  }
 }
