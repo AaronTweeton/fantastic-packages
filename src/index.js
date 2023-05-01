@@ -1,6 +1,14 @@
+import { createRoot, render, createElement } from "@wordpress/element";
 import domReady from "@wordpress/dom-ready";
-import { addMessage } from "./add-message";
+import { Greeting } from "./greeting";
 
 domReady(function () {
-  addMessage();
+  const domElement = document.getElementById("app");
+  const uiElement = createElement(Greeting, { toWhom: "World" });
+
+  if (createRoot) {
+    createRoot(domElement).render(uiElement);
+  } else {
+    render(uiElement, domElement);
+  }
 });
