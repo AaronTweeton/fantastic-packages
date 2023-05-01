@@ -77,10 +77,12 @@ if (!class_exists('FantasticPackages_Plugin')) {
                 return;
             }
 
+            wp_enqueue_style('wp-components');
+
             $filename = plugin_dir_path(__FILE__) . 'build/index.asset.php';
 
             /**
-             * Ff webpack-generated asset files exists, enqueue the assets. Otherwise, send an error to the console. 
+             * If webpack-generated asset files exists, enqueue the assets. Otherwise, send an error to the console. 
              */
             if (file_exists($filename)) {
                 $asset_file = require_once $filename;
@@ -92,6 +94,10 @@ if (!class_exists('FantasticPackages_Plugin')) {
                     $asset_file['version'],
                     true
                 );
+
+                $admin_url = admin_url();
+                wp_enqueue_script($this->handle);
+                wp_add_inline_script($this->handle, "const adminUrl = '{$admin_url}';");
             } else {
                 wp_register_script($this->handle, '',);
                 wp_enqueue_script($this->handle);
