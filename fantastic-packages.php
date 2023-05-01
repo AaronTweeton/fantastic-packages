@@ -79,7 +79,7 @@ if (!class_exists('FantasticPackages_Plugin')) {
 
             wp_enqueue_script(
                 $this->handle,
-                plugins_url('admin/js/index.js', __FILE__),
+                plugins_url('build/index.js', __FILE__),
             );
         }
     }
