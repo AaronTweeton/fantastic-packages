@@ -48,10 +48,16 @@ if (!class_exists('FantasticPackages_Plugin')) {
             return self::$instance;
         }
 
+        /**
+         * Composes the admin page content.
+         */
         public function compose_menu_page(): void {
             require_once plugin_dir_path(__FILE__) . 'includes/admin-page.php';
         }
 
+        /**
+         * Creates an admin page for the plugin.
+         */
         public function create_admin_page(): void {
             add_menu_page(
                 'Fantastic Packages Demo',
@@ -63,6 +69,9 @@ if (!class_exists('FantasticPackages_Plugin')) {
             );
         }
 
+        /**
+         * Enqueues assets for the plugin, if user is on the plugin's admin page.
+         */
         public function enqueue_assets(string $hook): void {
             if ('toplevel_page_' . $this->handle !== $hook) {
                 return;

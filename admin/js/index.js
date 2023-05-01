@@ -1,3 +1,6 @@
+/**
+ * Adds a message to #app using JavaScript.
+ */
 function addMessage() {
   const el = document.querySelector("#app");
 
