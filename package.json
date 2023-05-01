@@ -4,7 +4,8 @@
   "description": "A plugin solely written to show how @wordpress packages can be used.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "wp-scripts build",
+    "start": "wp-scripts start"
   },
   "repository": {
     "type": "git",
@@ -17,5 +18,11 @@
   "license": "GPL-2.0-or-later",
   "bugs": {
     "url": "https://github.com/AaronTweeton/fantastic-packages/issues"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^26.3.0"
+  },
+  "dependencies": {
+    "@wordpress/dom-ready": "^3.32.0"
   }
 }

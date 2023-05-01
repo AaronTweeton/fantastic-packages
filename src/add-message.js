@@ -1,14 +1,10 @@
 /**
  * Adds a message to #app using JavaScript.
  */
-function addMessage() {
+export function addMessage() {
   const el = document.querySelector("#app");
 
   if (el) {
     el.innerText = "Plugin JavaScript is loaded.";
   }
 }
-
-window.addEventListener("DOMContentLoaded", (event) => {
-  addMessage();
-});

@@ -77,10 +77,26 @@ if (!class_exists('FantasticPackages_Plugin')) {
                 return;
             }
 
-            wp_enqueue_script(
-                $this->handle,
-                plugins_url('admin/js/index.js', __FILE__),
-            );
+            $filename = plugin_dir_path(__FILE__) . 'build/index.asset.php';
+
+            /**
+             * Ff webpack-generated asset files exists, enqueue the assets. Otherwise, send an error to the console. 
+             */
+            if (file_exists($filename)) {
+                $asset_file = require_once $filename;
+
+                wp_enqueue_script(
+                    $this->handle,
+                    plugins_url('build/index.js', __FILE__),
+                    $asset_file['dependencies'],
+                    $asset_file['version'],
+                    true
+                );
+            } else {
+                wp_register_script($this->handle, '',);
+                wp_enqueue_script($this->handle);
+                wp_add_inline_script($this->handle, "console.error('" . __("Required asset files could not be loaded, which will prevent some content from loading. If you have downloaded this plugin from a repository, please make sure the build task has been run to generate the required asset files.", $this->handle) . "');");
+            }
         }
     }
 }
