@@ -1,5 +1,6 @@
 import apiFetch from "@wordpress/api-fetch";
 import { useEffect, useState } from "@wordpress/element";
+import { Button, Flex, Spinner } from "@wordpress/components";
 
 export function App() {
   const [posts, setPosts] = useState([]);
@@ -21,12 +22,19 @@ export function App() {
         <ul>
           {posts.map((post) => (
             <li>
-              <a href={post.link}>{post.title.rendered}</a>
+              <Flex justify="start">
+                {post.title.rendered}
+                <Button href={post.link} variant="secondary">
+                  View
+                </Button>
+              </Flex>
             </li>
           ))}
         </ul>
       ) : (
-        <>Fetching posts &hellip;</>
+        <>
+          Fetching posts <Spinner />
+        </>
       )}
     </div>
   );

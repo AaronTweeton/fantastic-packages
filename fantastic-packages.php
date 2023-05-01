@@ -77,10 +77,12 @@ if (!class_exists('FantasticPackages_Plugin')) {
                 return;
             }
 
+            wp_enqueue_style('wp-components');
+
             $filename = plugin_dir_path(__FILE__) . 'build/index.asset.php';
 
             /**
-             * Ff webpack-generated asset files exists, enqueue the assets. Otherwise, send an error to the console. 
+             * If webpack-generated asset files exists, enqueue the assets. Otherwise, send an error to the console. 
              */
             if (file_exists($filename)) {
                 $asset_file = require_once $filename;
