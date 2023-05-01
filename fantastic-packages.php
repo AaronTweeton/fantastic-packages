@@ -24,3 +24,26 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with WordPress Packages Demo. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 */
+
+namespace Fantastic_Packages;
+
+if (!defined('ABSPATH')) {
+    return;
+}
+
+if (!class_exists('FantasticPackages_Plugin')) {
+    class FantasticPackages_Plugin {
+        static $instance = false;
+
+        private function __construct() {
+        }
+
+        public static function get_instance(): FantasticPackages_Plugin {
+            if (!self::$instance)
+                self::$instance = new self;
+            return self::$instance;
+        }
+    }
+}
+
+$fantastic_packages_plugin = FantasticPackages_Plugin::get_instance();
