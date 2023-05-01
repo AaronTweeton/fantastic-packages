@@ -4,7 +4,8 @@
   "description": "A plugin solely written to show how @wordpress packages can be used.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "wp-scripts build",
+    "start": "wp-scripts start"
   },
   "repository": {
     "type": "git",
