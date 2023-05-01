@@ -1,10 +1,10 @@
 import { createRoot, render, createElement } from "@wordpress/element";
 import domReady from "@wordpress/dom-ready";
-import { Greeting } from "./greeting";
+import { App } from "./app";
 
 domReady(function () {
   const domElement = document.getElementById("app");
-  const uiElement = createElement(Greeting, { toWhom: "World" });
+  const uiElement = createElement(App, { toWhom: "World" });
 
   if (createRoot) {
     createRoot(domElement).render(uiElement);
